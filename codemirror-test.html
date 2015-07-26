@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="handlebars-v3.0.3.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/CodeMirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="bower_components/CodeMirror/lib/codemirror.css">
+    <link rel="stylesheet" href="bower_components/CodeMirror/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="javascript-config.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+    <script src="bower_components/CodeMirror/addon/edit/matchbrackets.js"></script>
+    <script src="bower_components/CodeMirror/addon/edit/closebrackets.js"></script>
+    <script src="bower_components/CodeMirror/addon/hint/show-hint.js"></script>
+    <script src="deep-keys-lib.js"></script>
+    <script src="validate-config.js"></script>
+    <script src="javascript-config.js"></script>
+    <script src="validate-key-addon.js"></script>
+  </head>
+  <body>
+    <div><textarea id="code-mirror"></textarea></div>
+    <script>
+      var
+      validatorConfig = {
+        type : "object",
+        keys : {
+          num : {
+            type : "number",
+            isMandatory : true,
+          },
+          str : {
+            type : "string",
+            regex : /^[a-zA-Z]*$/,
+          },
+          arr : {
+            type : "array",
+            elementsValidator : {
+              type : "number",
+            },
+          },
+          obj : {
+            type : "object",
+            keys : {
+              keyone : {
+                type : "string",
+              },
+              second : {
+                type : "string",
+              },
+              var3 : {
+                type : "string",
+              },
+            },
+          },
+        },
+      },
+      editor = CodeMirror.fromTextArea(document.getElementById("code-mirror"), {
+        lineNumbers       : true,
+        extraKeys         : {"Ctrl-Space": "autocomplete"},
+        matchBrackets     : true,
+        autoCloseBrackets : true,
+        mode              : {
+          name            : "javascript-config",
+          validatorConfig : validatorConfig,
+        },
+        lineWrapping      : true,
+        gutters           : ["CodeMirror-linenumbers", "CodeMirror-keyinfo"],
+      });
+    </script>
+  </body>
+</html>

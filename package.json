@@ -1,0 +1,24 @@
+{
+  "name": "javascript-config-codemirror-mode",
+  "version": "0.0.1",
+  "description": "CodeMirror mode for javascript config editing",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "ember server",
+    "build": "ember build",
+    "test": "ember test"
+  },
+  "repository": "https://github.com/AdityaHegde/artificial-intelligence",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "author": "Aditya Hegde",
+  "license": "MIT",
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}
